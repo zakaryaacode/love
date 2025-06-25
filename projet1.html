@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>zaki </title>
+</head>
+<body>
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصة حبنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0, #d4a5a5);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #5a3e36;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+        }
+        
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 0, 0, 0.5);
+            animation: fall 10s linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: #8b0000;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #5a3e36;
+            margin-bottom: 30px;
+        }
+        
+        .couple-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .person {
+            text-align: center;
+            position: relative;
+            max-width: 300px;
+        }
+        
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f8b195, #f67280);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 5rem;
+            color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+        
+        .heart-icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            animation: pulse 1.5s infinite;
+            margin: 20px 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .story-section {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            color: #8b0000;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+        }
+        
+        .story-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #ffd6e0 60%);
+            font-weight: bold;
+        }
+        
+        .secret-section {
+            text-align: center;
+            margin: 50px 0;
+        }
+        
+        .secret-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px dashed #e74c3c;
+        }
+        
+        .secret-title {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .secret-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .btn {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        .message-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #fff5f7, #ffe8e8);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            animation: popIn 0.5s;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #e74c3c;
+        }
+        
+        .love-letter {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 20px 0;
+            text-align: right;
+        }
+        
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #5a3e36;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .subtitle { font-size: 1.2rem; }
+            .couple-section { flex-direction: column; gap: 30px; }
+            .story-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="container">
+        <header>
+            <h1>قصة حبنا</h1>
+            <div class="subtitle">قصة جميلة بين صديقين تحولت إلى حب خفي</div>
+        </header>
+        
+        <div class="couple-section">
+            <div class="person">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>أنا</h3>
+                <p>الشخص الذي يحب من كل قلبه</p>
+            </div>
+            
+            <div class="heart-icon">
+                <i class="fas fa-heart"></i>
+            </div>
+            
+            <div class="person">
+                <div class="avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>إيمان</h3>
+                <p>الصديقة التي تملك قلبه</p>
+            </div>
+        </div>
+        
+        <div class="story-section">
+            <h2>قصتنا الجميلة</h2>
+            <p class="story-text">
+                بدأت قصتنا كصداقة بريئة، أيام من الضحك والمزاح والحديث عن كل شيء. كنا نتبادل الأحاديث والأحلام والمخاوف، وكنا دائمًا بجانب بعضنا في الأوقات الصعبة والجميلة.
+            </p>
+            <p class="story-text">
+                مع مرور الوقت، بدأت المشاعر تتغير. لاحظت أنني أبحث عن أي فرصة لأراها، أن أحادثها، أن أسمع صوتها. ابتسامتها أصبحت تضيء يومي، ووجودها يجعل كل شيء أجمل.
+            </p>
+            <p class="story-text">
+                <span class="highlight">أحببتها من كل قلبي</span>، وأنا أعرف أنها تحبني أيضًا، لكنها تخشى الاعتراف بذلك. ربما خوفًا من تغيير طبيعة العلاقة بيننا، أو ربما لعدم استعدادها بعد.
+            </p>
+            <p class="story-text">
+                هذا الموقع هو تعبير عن مشاعري، رسالة حب صادقة أهديها لها، لأقول لها أنني سأنتظرها مهما طال الوقت، وسأظل أحبها حتى تعترف بمشاعرها.
+            </p>
+        </div>
+        
+        <div class="secret-section">
+            <div class="secret-box">
+                <h3 class="secret-title">رسالة خاصة لإيمان</h3>
+                <p class="secret-text">
+                    أعلم أنك تعرفين مشاعري، وأعلم أنك تشعرين بنفس الشعور. هذه الرسالة هي اعترافي بحبي لك، ووعد مني بأنني سأظل بجانبك دائمًا.
+                </p>
+                <button class="btn" id="showLetter">
+                    <i class="fas fa-envelope"></i> اقرأ الرسالة
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="message-modal" id="messageModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>رسالة حب إلى إيمان</h2>
+            <div class="love-letter">
+                <p>عزيزتي إيمان،</p>
+                <p>منذ أن عرفتك، تغيرت حياتي. لقد جعلتِ الأيام أكثر جمالًا، واللحظات أكثر معنى. أنتِ أكثر من مجرد صديقة، أنتِ نصف روحي وكل أحلامي.</p>
+                <p>أعلم أنكِ تخافين من الاعتراف بمشاعرك، لكن ثقي بي، ثقي بقلبك. الحب الذي بيننا حقيقي وجميل، ولا يجب أن نخفيه.</p>
+                <p>سأنتظركِ مهما طال الوقت، لأنني أعلم أنكِ تستحقين الانتظار. كل ما أريده هو أن تعترفي بمشاعرك عندما تكونين مستعدة.</p>
+                <p>أحبكِ أكثر مما تتخيلين، وأكثر مما تستطيع الكلمات التعبير عنه.</p>
+            </div>
+            <div class="signature">مع كل الحب</div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>صنع بكل الحب ❤️ | هذا الموقع مخصص لإيمان فقط</p>
+    </footer>
+
+    <script>
+        // إنشاء القلوب المتساقطة
+        const heartsContainer = document.getElementById('hearts');
+        for (let i = 0; i < 50; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 5 + 5 + 's';
+            heart.style.opacity = Math.random();
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heartsContainer.appendChild(heart);
+        }
+        
+        // عرض الرسالة
+        const showLetterBtn = document.getElementById('showLetter');
+        const messageModal = document.getElementById('messageModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        showLetterBtn.addEventListener('click', () => {
+            messageModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            messageModal.style.display = 'none';
+        });
+        
+        // إغلاق النافذة عند النقر خارجها
+        window.addEventListener('click', (e) => {
+            if (e.target === messageModal) {
+                messageModal.style.display = 'none';
+            }
+        });
+        
+        // تأثيرات إضافية عند التمرير
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            document.body.style.backgroundPosition = `0% ${-scrollPosition * 0.5}px`;
+        });
+    </script>
+</body>
+</html>
